@@ -20,5 +20,4 @@ func main() {
   if thirdGreeting != "" {
     fmt.Println("Hello " + thirdGreeting)
     }
-
-
+}
