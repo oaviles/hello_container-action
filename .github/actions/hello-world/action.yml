@@ -1,0 +1,7 @@
+name: "my hello action using Docker powered by OA"
+
+description: "say hello with GitHub Actions using Docker"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
