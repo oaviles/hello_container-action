@@ -1,21 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+# https://hub.docker.com/_/microsoft-dotnet-core
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /source
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
-
-COPY . .
-# RUN dotnet build "netcore-action.csproj" -c Release -o /app/build
+# copy csproj and restore as distinct layers
+COPY *.csproj .
+RUN dotnet restore -r linux-arm64
 
 # copy and publish app and libraries
-RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
+COPY . .
+RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no-restore
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
+# final stage/image
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
-COPY --from=build /app/publish .
-
+COPY --from=build /app .
 ENTRYPOINT ["./netcore-action"]
 
 
