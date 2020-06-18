@@ -12,7 +12,7 @@ COPY . .
 RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
 WORKDIR /app
 COPY --from=build /app/publish .
 
