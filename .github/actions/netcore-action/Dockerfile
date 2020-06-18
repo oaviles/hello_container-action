@@ -14,7 +14,7 @@ FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine
 WORKDIR /app
 COPY --from=build /app .
 
-ENTRYPOINT ["./netcore-action"]
+ENTRYPOINT ["./NetCore.Docker.dll"]
 
 # FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 # WORKDIR /source
