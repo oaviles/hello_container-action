@@ -1,7 +1,9 @@
 #FROM mcr.microsoft.com/dotnet/core/runtime:3.1 AS base
 #WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+#FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster 
 
 WORKDIR /src
 
@@ -13,7 +15,7 @@ COPY . .
 RUN dotnet build "netcore-action.csproj" -c Release -o /app/build
 # RUN npm run build
 
-FROM build AS publish
+#FROM build AS publish
 RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
 
 #FROM base AS final
