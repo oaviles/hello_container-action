@@ -16,7 +16,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
 WORKDIR /app
 COPY --from=build /app/publish .
 
-ENTRYPOINT ["dotnet", "netcore-action.dll"]
+ENTRYPOINT ["./netcore-action"]
 
 
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS base
