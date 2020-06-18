@@ -4,24 +4,16 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
-RUN dotnet restore -r linux-musl-arm64
+RUN dotnet restore -r linux-arm64
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -c release -o /app -r linux-musl-arm64 --self-contained false --no-restore
+RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine-arm64v8
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-bionic-arm64v8
 WORKDIR /app
 COPY --from=build /app .
-
-# See: https://github.com/dotnet/announcements/issues/20
-# Uncomment to enable globalization APIs (or delete)
-#ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT false
-#RUN apk add --no-cache icu-libs
-#ENV LC_ALL en_US.UTF-8
-#ENV LANG en_US.UTF-8
-
 ENTRYPOINT ["./netcore-action"]
 
 
