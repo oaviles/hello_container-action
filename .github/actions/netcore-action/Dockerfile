@@ -1,9 +1,7 @@
 #FROM mcr.microsoft.com/dotnet/core/runtime:3.1 AS base
 #WORKDIR /app
 
-#FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster 
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 
 WORKDIR /src
 
@@ -19,10 +17,10 @@ RUN dotnet build "netcore-action.csproj" -c Release -o /app/build
 RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
 
 #FROM base AS final
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "netcore-action.dll"]
-
 
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 #WORKDIR /source
