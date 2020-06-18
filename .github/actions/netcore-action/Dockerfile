@@ -9,7 +9,7 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c release -o /app --no-restore
 
-RUN dir /source/bin/release/netcoreapp3.1/ *.* /s
+RUN dir /source/bin/release/netcoreapp3.1/ *.*
 
 # Build runtime image
 # FROM mcr.microsoft.com/dotnet/core/runtime:3.1
@@ -17,6 +17,6 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 WORKDIR /app
 COPY --from=build /app .
 
-RUN dir /app *.dll /s
+RUN dir /app *.*
 
 ENTRYPOINT ["dotnet", "netcore-action.dll"]
