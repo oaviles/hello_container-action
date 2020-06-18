@@ -1,0 +1,7 @@
+name: "My NetCore action using Docker powered by OA"
+
+description: "NetCore with GitHub Actions using Docker"
+    
+runs:
+  using: "docker"
+  image: "Dockerfile"
