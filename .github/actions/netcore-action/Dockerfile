@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /source
 
 # Copy csproj and restore as distinct layers
@@ -12,7 +12,7 @@ COPY . .
 RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 WORKDIR /app
 COPY --from=build /app/publish .
 
