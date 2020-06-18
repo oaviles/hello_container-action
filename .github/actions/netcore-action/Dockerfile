@@ -1,16 +1,16 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
-WORKDIR /App
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /source
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+# copy and publish app and libraries
+COPY . .
+RUN dotnet publish -c release -o /app --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-WORKDIR /App
-COPY bin/Release/netcoreapp3.1/publish/ App/
-ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "netcore-action.dll"]
