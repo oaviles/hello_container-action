@@ -14,7 +14,11 @@ RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-bionic-arm64v8
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["./netcore-action"]
+
+RUN cd /app
+RUN ls
+
+ENTRYPOINT ["./app/netcore-action"]
 
 
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
