@@ -19,4 +19,4 @@ COPY --from=build /app .
 
 RUN dir /app *.*
 
-ENTRYPOINT ["dotnet", "netcore-action.dll"]
+ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
