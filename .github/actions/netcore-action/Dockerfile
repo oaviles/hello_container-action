@@ -15,8 +15,6 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-bionic-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 
-RUN ls
-
 ENTRYPOINT ["./app/netcore-action"]
 
 
