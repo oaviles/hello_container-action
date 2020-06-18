@@ -1,40 +1,20 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /source
 
-# copy csproj and restore as distinct layers
-COPY *.csproj .
-RUN dotnet restore -r linux-musl-x64
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -c release -o /app -r linux-musl-x64 --self-contained true --no-restore /p:PublishTrimmed=true /p:PublishReadyToRun=true
+RUN dotnet publish -c release -o /app --no-restore
 
-# final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
 COPY --from=build /app .
 
-ENTRYPOINT ["./netcore-action.dll"]
-
-# FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-# WORKDIR /source
-
-# Copy csproj and restore as distinct layers
-# COPY *.csproj ./
-# RUN dotnet restore
-
-# copy and publish app and libraries
-# COPY . .
-# RUN dotnet publish -c release -o /app --no-restore
-
-# Build runtime image
-# FROM mcr.microsoft.com/dotnet/core/runtime:3.1
-# WORKDIR /app
-# COPY --from=build /app .
-
-# RUN dir /app *.*
-
-# ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
+ENTRYPOINT ["dotnet", "netcore-action.dll"]
 
 
 
