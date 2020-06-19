@@ -17,7 +17,7 @@ RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["./netcore-action"]
+ENTRYPOINT ["dotnet", "netcore-action.dll"]
 
   
 # https://hub.docker.com/_/microsoft-dotnet-core
