@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: netcore-action
-        uses: ./.github/actions/netcore-action
+        uses: ./.github/actions/hello-world
       
       - name: go-action
-        uses: ./.github/actions/hello-world
+        uses: ./.github/actions/netcore-action
 
 #      - name: meow
 #        uses: ./.github/actions/cat-facts
