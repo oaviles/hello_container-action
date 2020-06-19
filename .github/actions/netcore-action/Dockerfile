@@ -1,25 +1,42 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+#### Dockerfile V1 ######
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-WORKDIR /src
+COPY *.sln .
+COPY src/ ./src/
 
-COPY *.csproj ./
-RUN dotnet restore "netcore-action.csproj"
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-COPY . .
+ENTRYPOINT ["/entrypoint.sh"]
 
-RUN dotnet build "netcore-action.csproj" -c Release -o /app/build
+##### Dockerfile V2 ######
 
-FROM build AS publish
-RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
+#FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+#WORKDIR /app
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "netcore-action.dll"]
+# FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+#WORKDIR /src
 
-  
+#COPY *.csproj ./
+#RUN dotnet restore "netcore-action.csproj"
+
+#COPY . .
+
+#RUN dotnet build "netcore-action.csproj" -c Release -o /app/build
+
+#FROM build AS publish
+#RUN dotnet publish "netcore-action.csproj" -c Release -o /app/publish
+
+#FROM base AS final
+#WORKDIR /app
+#COPY --from=publish /app/publish .
+#ENTRYPOINT ["dotnet", "netcore-action.dll"]
+
+ 
+##### Dockerfile V3 ######
+ 
 # https://hub.docker.com/_/microsoft-dotnet-core
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 #WORKDIR /source
