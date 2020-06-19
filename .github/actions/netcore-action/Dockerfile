@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /app
 
 COPY *.csproj .
-COPY src/ ./src/
+COPY . ./src/
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
