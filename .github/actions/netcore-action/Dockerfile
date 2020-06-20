@@ -60,4 +60,4 @@ WORKDIR /app
 COPY --from=build /app .
 
 #ENTRYPOINT echo "Hola Omar"
-CMD ["dotnet", "netcore-action.dll"]
+CMD ["/usr/bin/dotnet", "/app/netcore-action.dll"]
