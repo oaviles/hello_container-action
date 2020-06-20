@@ -54,9 +54,12 @@ RUN dotnet restore -r linux-x64
 COPY . .
 RUN dotnet publish -c release -o /app -r linux-x64 --self-contained true --no-restore /p:PublishTrimmed=true /p:PublishReadyToRun=true
 
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-buster-slim
 WORKDIR /app
 COPY --from=build /app .
 #ENTRYPOINT top -b
-ENTRYPOINT ls /p
+ENTRYPOINT ["/entrypoint.sh"]
