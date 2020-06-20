@@ -54,8 +54,6 @@ RUN dotnet restore -r linux-musl-arm64
 COPY . .
 RUN dotnet publish -c release -o /app -r linux-musl-arm64 --self-contained false --no-restore
 
-RUN chmod +x /netcore-action
-
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine-arm64v8
 WORKDIR /app
