@@ -58,5 +58,5 @@ RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT echo "Hola Omar"
-#CMD echo "Hola Omar"
+#ENTRYPOINT echo "Hola Omar"
+CMD [ "sh", "-c", "echo $PATH" ]
