@@ -59,7 +59,5 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 
-RUN echo $PATH
-
 #ENTRYPOINT echo "Hola Omar"
 CMD ["dotnet", "netcore-action.dll"]
