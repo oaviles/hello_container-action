@@ -59,4 +59,4 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 #ENTRYPOINT echo "Hola Omar"
-CMD [ "sh", "-c", "echo $PATH" ]
+CMD echo $PATH
