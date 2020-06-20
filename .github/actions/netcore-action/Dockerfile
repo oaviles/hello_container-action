@@ -58,5 +58,5 @@ RUN dotnet publish -c release -o /app -r linux-x64 --self-contained true --no-re
 FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-buster-slim
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["./top", -b]
+ENTRYPOINT top -b
 #CMD []
