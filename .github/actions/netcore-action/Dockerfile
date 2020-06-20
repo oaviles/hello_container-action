@@ -48,17 +48,17 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
-RUN dotnet restore -r linux-x64
+RUN dotnet restore -r linux-musl-arm64
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -c release -o /app -r linux-x64 --self-contained true --no-restore /p:PublishTrimmed=true /p:PublishReadyToRun=true
+RUN dotnet publish -c release -o /app -r linux-musl-arm64 --self-contained false --no-restore
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-buster-slim
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 #ENTRYPOINT top -b
