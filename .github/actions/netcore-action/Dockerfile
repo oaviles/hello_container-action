@@ -58,5 +58,8 @@ RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
 COPY --from=build /app .
+
+RUN echo $PATH
+
 #ENTRYPOINT echo "Hola Omar"
-CMD echo $PATH
+CMD ["dotnet", "netcore-action.dll"]
