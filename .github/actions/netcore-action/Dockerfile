@@ -48,7 +48,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
-RUN dotnet restore -r linux-musl-arm64
+RUN dotnet restore -r linux-arm64
 
 # copy and publish app and libraries
 COPY . .
