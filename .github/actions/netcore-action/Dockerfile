@@ -59,7 +59,7 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 
-RUN /bin/bash -c 'source $HOME/; echo $HOME'
+RUN 'source $HOME/; echo $HOME'
 
 #ENTRYPOINT echo "Hola Omar"
 CMD ["dotnet", "netcore-action.dll"]
