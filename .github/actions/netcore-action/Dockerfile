@@ -59,4 +59,4 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.1-alpine-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 #ENTRYPOINT top -b
-ENTRYPOINT ["/netcore-action"]
+CMD echo "Hola Omar"
