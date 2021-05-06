@@ -43,32 +43,23 @@
 
 ###### Dockerfile ######3
 
-#FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-#WORKDIR /source
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
 
 # copy csproj and restore as distinct layers
-#COPY *.csproj .
-#RUN dotnet restore -r linux-arm64
+COPY *.csproj .
+RUN dotnet restore -r linux-arm64
 
 # copy and publish app and libraries
-#COPY . .
-#RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no-restore
+COPY . .
+RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no-restore
 
 # final stage/image
-#FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim
-#WORKDIR /app
-#COPY --from=build /app .
+WORKDIR /app
+COPY bin/Release/netcoreapp3.1/publish/ app/
+RUN ls bin/Release/netcoreapp3.1/publish/
+RUN ls bin/
 
 #ENTRYPOINT echo "Hola Omar"
 #CMD ["/usr/bin/dotnet", "/app/netcore-action.dll"]
-#CMD ["dotnet", "netcore-action.dll"]
-
-
-###### Dockerfile ######4
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
-COPY *.csproj .
-RUN dotnet restore -r linux-arm64
-RUN dotnet publish -c Release
-COPY bin/Release/netcoreapp3.1/publish/ App/
-WORKDIR /App
-ENTRYPOINT ["/usr/bin/dotnet", "NetCore.Docker.dll"]
+#CMD ["/usr/bin/dotnet", "NetCore.Docker.dll"]
+ENTRYPOINT ["dotnet", "netcore-action.dll"]
