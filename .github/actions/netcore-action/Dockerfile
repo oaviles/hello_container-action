@@ -61,7 +61,7 @@ COPY --from=build /app .
 
 # DEBUG Folder
 RUN ls 
-RUN ls bin/
+RUN ls /app
 
 
 ENTRYPOINT ["dotnet", "netcore-action.dll"]
