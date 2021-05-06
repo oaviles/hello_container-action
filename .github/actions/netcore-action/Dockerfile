@@ -57,11 +57,11 @@ RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1
 WORKDIR /app
-COPY bin/Release/netcoreapp3.1/publish/ app/
+COPY --from=build /app .
 
 # DEBUG Folder
-RUN ls bin/Release/netcoreapp3.1/publish/
+RUN ls 
 RUN ls bin/
-COPY --from=build /app .
+
 
 ENTRYPOINT ["dotnet", "netcore-action.dll"]
