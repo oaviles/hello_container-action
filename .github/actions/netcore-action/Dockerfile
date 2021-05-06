@@ -22,7 +22,7 @@
 #CMD ["dotnet", "netcore-action.dll"]
 
  
-##### Dockerfile V2 ######
+##### Dockerfile V3 ######
  
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 #WORKDIR /source
