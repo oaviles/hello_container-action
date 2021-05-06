@@ -62,7 +62,6 @@ COPY --from=build /app .
 # DEBUG Folder
 RUN ls 
 RUN ls /app
-RUN /usr/bin
 
 #CMD ["/usr/bin/dotnet", "NetCore.Docker.dll"]
 ENTRYPOINT ["/usr/bin/dotnet", "/app/netcore-action.dll"]
