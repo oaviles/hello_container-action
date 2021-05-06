@@ -48,14 +48,14 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
-RUN dotnet restore -r linux-arm64
+RUN dotnet restore -r linux-musl-x64
 
 # copy and publish app and libraries
 COPY . .
 RUN dotnet publish -c release -o /app -r linux-arm64 --self-contained false --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim-arm64v8
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim
 WORKDIR /app
 COPY --from=build /app .
 
