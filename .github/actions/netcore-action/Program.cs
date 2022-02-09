@@ -6,7 +6,7 @@ namespace NetCore.Docker
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("My NetCore Action is running, COOL!");
+            Console.WriteLine("My NetCore Action is running, COOL! V1.0");
         }
     }
 }
