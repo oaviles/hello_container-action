@@ -1,10 +1,10 @@
 name: Docker Actions
 
-# on: workflow_dispatch
+on: workflow_dispatch
 
-on:
-  pull_request:
-    types: [labeled]
+#on:
+#  pull_request:
+#    types: [labeled]
 
 jobs:
   action:
@@ -16,13 +16,13 @@ jobs:
       - name: netcore-action
         uses: ./.github/actions/netcore-action
 
-   #   - name: meow
-   #     uses: ./.github/actions/cat-facts
-   #     id: cat
+      - name: meow
+        uses: ./.github/actions/cat-facts
+        id: cat
 
-   #   - name: create-issue
-   #     uses: ./.github/actions/issue-maker
-   #     with:
-   #       repoToken: ${{secrets.GITHUB_TOKEN}}
-   #       catFact: ${{steps.cat.outputs.fact}}
-   #       issueTitle: "--- A cat fact for you, enjoy --- "
+      - name: create-issue
+        uses: ./.github/actions/issue-maker
+        with:
+          repoToken: ${{secrets.GITHUB_TOKEN}}
+          catFact: ${{steps.cat.outputs.fact}}
+          issueTitle: "--- A cat fact for you, enjoy --- "
