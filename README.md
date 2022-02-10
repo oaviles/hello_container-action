@@ -1,5 +1,3 @@
-# Welcome to your course 🎉
-
 ### Getting started
 
 In this repository we will be diving into the world of writing GitHub Actions! I will guide you through the process of writing a custom Docker based GitHub Actions.
@@ -10,8 +8,6 @@ Currently, there are **two** supported ways to create your own GitHub Actions:
 
 - [Docker container actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-actions#docker-container-actions)
 - [JavaScript actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-actions#javascript-actions)
-
-As you can see we aren't necessarily limited to Docker even though it is the focal point for this course.
 
 ---
 
@@ -25,14 +21,3 @@ After all, for each time we need to reinvent the wheel for our specific use-case
 - The [GitHub Actions Repository](https://github.com/actions) is where you can find actions that are written by GitHub. We will leverage an action named `[checkout](https://github.com/actions/checkout)` from this repository as we go through this course. I'll explain more about what it does when we use it!
 - Your repositories may also contain **private actions** and they will most likely be located in the `.github/actions` directory in the root of your repository. **This is the convention we will be using as we learn how to create our own action.**
 
----
-
-### Using actions and Learning Lab
-
-In other courses, you may have noticed that some behaviors take me longer to respond to than others. In this course, many of the behaviors we'll see demonstrated will be related to our GitHub Actions workflow. Those workflows sometimes take longer to complete, up to several minutes. Don't be concerned if I take a few minutes to respond, or if I respond too quickly. Sometimes, I'll let you know what the workflow will say before it finishes! Please wait for the workflows to finish before moving on to your next step.
-
-If you aren't already familiar, it may be a good idea to go through the [Introduction to GitHub Learning Lab](https://lab.github.com/githubtraining/introduction-to-github).
-
----
-
-**Please navigate to the open issue in this repository to get started!**
