@@ -16,11 +16,11 @@ jobs:
       - name: netcore-action
         uses: ./.github/actions/netcore-action
 
-      - name: meow
+      - name: python-action
         uses: ./.github/actions/cat-facts
         id: cat
 
-      - name: create-issue
+      - name: notejs-action
         uses: ./.github/actions/issue-maker
         with:
           repoToken: ${{secrets.GITHUB_TOKEN}}
