@@ -16,4 +16,4 @@ jobs:
       - name: javascript-action
         uses: ./.github/actions/javascript-action
         with:
-          p1: "Hi developers, clone this repo... ;)"
+          p2: "Hi developers, clone this repo... ;)"
