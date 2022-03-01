@@ -1,6 +1,17 @@
-name: "my javascript action"
+name: "my hello javascript action"
 
-description: "say hello with GitHub Actions powered by javascript"
+description: "Say hello with javacript actions"
+
+inputs:
+  p1:
+    description: "Parameter 1"
+    required: true
+    default: "Hubot"
+
+  p2:
+    description: "Parameter 2"
+    required: falta
+    default: "Default value in action.yaml file, you can change this default value"
 
 runs:
   using: "node12"
