@@ -1,0 +1,17 @@
+name: Run JavaScript Actions
+
+on: workflow_dispatch
+
+#on:
+#  pull_request:
+#    types: [labeled]
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: javascript-action
+        uses: ./.github/actions/javascript-action
