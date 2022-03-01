@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: javascript-action
-        uses: ./.github/actions/javascript-action
-
       - name: netcore-action
         uses: ./.github/actions/netcore-action
 
