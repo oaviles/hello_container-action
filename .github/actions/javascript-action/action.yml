@@ -6,11 +6,11 @@ inputs:
   p1:
     description: "Parameter 1"
     required: true
-    default: "Hubot"
+    default: "OA"
 
   p2:
     description: "Parameter 2"
-    required: falta
+    required: false
     default: "Default value in action.yaml file, you can change this default value"
 
 runs:
