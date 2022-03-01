@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = netcore-action
+build_property.ProjectDir = c:\Users\oavil\code\Github\hello_container-action\.github\actions\netcore-action\

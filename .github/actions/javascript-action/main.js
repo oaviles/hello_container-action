@@ -1,0 +1,1 @@
+console.log("Hi, message from javascript action!");

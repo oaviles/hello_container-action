@@ -1,0 +1,7 @@
+name: "my javascript action"
+
+description: "say hello with GitHub Actions powered by javascript"
+
+runs:
+  using: "node12"
+  main: "main.js"
