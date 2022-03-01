@@ -4,6 +4,6 @@ const firstParameter = core.getInput("p1");
 const secondParameter = core.getInput("p2");
 
 console.log(`Hello ${firstParameter}`);
-if (thirdGreeting) {
+if (thirdParameter) {
   console.log(`Hello ${thirdParameter}`);
 }
